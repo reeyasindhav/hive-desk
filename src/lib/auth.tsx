@@ -30,8 +30,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signIn = useCallback((email: string, name?: string) => {
     const derived =
       name?.trim() ||
-      email
-        .split("@")[0]
+      (email.split("@")[0] ?? "")
         .replace(/[._-]+/g, " ")
         .replace(/\b\w/g, (c) => c.toUpperCase()) ||
       "Alex Moreno";
