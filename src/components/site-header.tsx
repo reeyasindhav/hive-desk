@@ -27,7 +27,7 @@ export function SiteHeader() {
               key={item.to}
               to={item.to}
               className="relative text-sm text-muted-foreground transition-colors hover:text-foreground after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-foreground after:transition-all after:duration-300 hover:after:w-full"
-              activeProps={{ className: "text-foreground" }}
+              activeProps={{ className: "text-foreground after:w-full" }}
             >
               {item.label}
             </Link>
@@ -44,7 +44,10 @@ export function SiteHeader() {
             </Link>
           ) : (
             <>
-              <Link to="/login" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+              <Link
+                to="/login"
+                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
                 Sign in
               </Link>
               <Link
@@ -74,7 +77,11 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
-            <Link to={user ? "/dashboard" : "/login"} onClick={() => setOpen(false)} className="text-sm">
+            <Link
+              to={user ? "/dashboard" : "/login"}
+              onClick={() => setOpen(false)}
+              className="text-sm"
+            >
               {user ? "Open dashboard" : "Sign in"}
             </Link>
             <Link

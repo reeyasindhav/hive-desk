@@ -11,13 +11,17 @@ export const Route = createFileRoute("/pricing")({
       { title: "Pricing — Hivedesk" },
       {
         name: "description",
-        content: "Simple freelancer pricing: a free solo plan, a studio plan for growing practices, and team billing.",
+        content:
+          "Simple freelancer pricing: a free solo plan, a studio plan for growing practices, and team billing.",
       },
       { property: "og:title", content: "Pricing — Hivedesk" },
-      { property: "og:description", content: "Free to start. Flat pricing as your practice grows." },
+      {
+        property: "og:description",
+        content: "Free to start. Flat pricing as your practice grows.",
+      },
     ],
   }),
-  component: Pricing;
+  component: Pricing,
 });
 
 const plans = [
@@ -44,14 +48,28 @@ const plans = [
     name: "Collective",
     monthly: 29,
     tagline: "For small teams sharing work.",
-    features: ["Everything in Studio", "Up to 5 collaborators", "Shared workload view", "Team time reports"],
+    features: [
+      "Everything in Studio",
+      "Up to 5 collaborators",
+      "Shared workload view",
+      "Team time reports",
+    ],
   },
 ];
 
 const faqs = [
-  { q: "Can I switch plans later?", a: "Yes — upgrade or downgrade whenever you like, and we prorate the difference." },
-  { q: "Do you take a cut of invoices?", a: "Never. Hivedesk charges a flat fee, and every invoice payment is yours." },
-  { q: "Is there a free trial of Studio?", a: "Studio is free for 14 days, with no card required to begin." },
+  {
+    q: "Can I switch plans later?",
+    a: "Yes — upgrade or downgrade whenever you like, and we prorate the difference.",
+  },
+  {
+    q: "Do you take a cut of invoices?",
+    a: "Never. Hivedesk charges a flat fee, and every invoice payment is yours.",
+  },
+  {
+    q: "Is there a free trial of Studio?",
+    a: "Studio is free for 14 days, with no card required to begin.",
+  },
 ];
 
 function Pricing() {
@@ -90,17 +108,29 @@ function Pricing() {
               <div
                 className={cn(
                   "hover-lift flex h-full flex-col rounded-2xl border p-7",
-                  plan.featured ? "border-transparent bg-ink text-ink-foreground" : "border-border bg-card",
+                  plan.featured
+                    ? "border-transparent bg-ink text-ink-foreground"
+                    : "border-border bg-card",
                 )}
               >
-                <p className={cn("text-sm font-medium", plan.featured && "text-ink-foreground")}>{plan.name}</p>
-                <p className={cn("mt-1 text-xs", plan.featured ? "text-ink-foreground/60" : "text-muted-foreground")}>
+                <p className={cn("text-sm font-medium", plan.featured && "text-ink-foreground")}>
+                  {plan.name}
+                </p>
+                <p
+                  className={cn(
+                    "mt-1 text-xs",
+                    plan.featured ? "text-ink-foreground/60" : "text-muted-foreground",
+                  )}
+                >
                   {plan.tagline}
                 </p>
                 <p className="mt-6 font-display text-5xl font-bold">
                   ${yearly ? Math.round(plan.monthly * 10) : plan.monthly}
                   <span
-                    className={cn("text-sm font-normal", plan.featured ? "text-ink-foreground/60" : "text-muted-foreground")}
+                    className={cn(
+                      "text-sm font-normal",
+                      plan.featured ? "text-ink-foreground/60" : "text-muted-foreground",
+                    )}
                   >
                     /{yearly ? "yr" : "mo"}
                   </span>
@@ -108,8 +138,15 @@ function Pricing() {
                 <ul className="mt-6 flex-1 space-y-3 text-sm">
                   {plan.features.map((f) => (
                     <li key={f} className="flex gap-3">
-                      <Check className={cn("mt-0.5 size-4 shrink-0", plan.featured ? "text-mint-signal" : "text-mint-signal")} />
-                      <span className={plan.featured ? "text-ink-foreground/85" : undefined}>{f}</span>
+                      <Check
+                        className={cn(
+                          "mt-0.5 size-4 shrink-0",
+                          plan.featured ? "text-mint-signal" : "text-mint-signal",
+                        )}
+                      />
+                      <span className={plan.featured ? "text-ink-foreground/85" : undefined}>
+                        {f}
+                      </span>
                     </li>
                   ))}
                 </ul>

@@ -1,4 +1,14 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from "react";
+
+import { clearTimerStorage } from "./timer";
 
 export type HiveUser = { name: string; email: string; role: string };
 
@@ -41,6 +51,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const signOut = useCallback(() => {
+    clearTimerStorage();
     window.localStorage.removeItem(STORAGE_KEY);
     setUser(null);
   }, []);
